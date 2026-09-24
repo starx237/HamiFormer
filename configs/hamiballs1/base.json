@@ -1,0 +1,70 @@
+{
+  "schema": "hamiformer.hami1.training.config.v1",
+  "seed": 42,
+  "dataset": {
+    "root": "data/hamiballs_canonical_v2/train_adapter48",
+    "train_split": "train",
+    "num_objects": 5,
+    "future_steps": 48,
+    "q_dim": 2,
+    "attr_dim": 3
+  },
+  "model": {
+    "block_attn_pattern": [
+      "spatial",
+      "temporal",
+      "object",
+      "temporal"
+    ],
+    "depth": 4,
+    "dropout": 0.0,
+    "hidden_size": 128,
+    "mlp_inner_dim": 256,
+    "mlp_ratio": 2.0,
+    "num_heads": 4,
+    "num_register_tokens": 2,
+    "qk_norm": true,
+    "state_dim": 4,
+    "temporal_rope_mode": "physical_time"
+  },
+  "hamiltonian": {
+    "depth": 2,
+    "expansion": 2.0,
+    "gfjp_iterations": 2,
+    "heads": 4,
+    "health_safety_margin": 1.25,
+    "health_weight": 0.1,
+    "hidden_size": 16,
+    "mixed_condition_limit": 10.0,
+    "mixed_singular_floor": 0.2,
+    "object_attention_mode": "auto",
+    "rollout_horizon": 4,
+    "rollout_weight": 1.0,
+    "spatial_attention_mode": "auto",
+    "student_t_dof": 4.0,
+    "tangent_spectral_norm_limit": 5.0
+  },
+  "residual": {
+    "hidden_size": 32,
+    "parameterization": "unbounded_v1",
+    "output_scale": 1.0
+  },
+  "gate": {
+    "architecture": "per_object_field_gru_compact",
+    "rank": 12,
+    "regret_auxiliary_weight": 0.1
+  },
+  "optimization": {
+    "batch_size": 64,
+    "cache_batch_size": 256,
+    "num_workers": 8,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0
+  },
+  "rectified_flow": {
+    "train_tau_p_mean": -0.8,
+    "train_tau_p_std": 0.8,
+    "t_eps": 0.05,
+    "phase_noise_scale": 1.0
+  }
+}

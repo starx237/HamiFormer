@@ -1,0 +1,43 @@
+{
+  "gate": {
+    "architecture": "per_object_field_gru_compact",
+    "initialization": "fresh_zero_logit_gate_g_equals_0.5_v1",
+    "rank": 12,
+    "regret_auxiliary_weight": 0.0
+  },
+  "objective": {
+    "event_or_contact_labels": "forbidden",
+    "teacher": "accepted_mixed_per_object_convex_projection_v1"
+  },
+  "parents": {
+    "main_checkpoint": "outputs/hami1_base/checkpoint_050000.pt",
+    "main_checkpoint_sha256": null,
+    "terminal_step": 50000,
+    "wide_checkpoint": "outputs/hami1_wide_d/checkpoint_050000.pt",
+    "wide_checkpoint_sha256": null
+  },
+  "prohibitions": [
+    "no_d_h_or_r_parameter_update",
+    "training_split_data_only",
+    "no_raw_mix_mse_or_binary_regret",
+    "no_cross_rf_gate_hidden"
+  ],
+  "purpose": "hami1_component_gate_training",
+  "r_terminal": {
+    "expected_updates": {
+      "n12": 50,
+      "n20": 100,
+      "n8": 50,
+      "total": 200
+    },
+    "path": "outputs/hami1_r/r_terminal.pt",
+    "pipeline_component_updates": 200,
+    "pipeline_critical_path_rounds": 200,
+    "sha256": null,
+    "training_registration_sha256": null
+  },
+  "schema": "hamiformer.hamiballs.carrier_cache.soft_projection_gate.registration.v1",
+  "training": {
+    "sampling_seed": 1588683848
+  }
+}

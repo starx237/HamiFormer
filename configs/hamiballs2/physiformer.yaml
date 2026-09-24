@@ -1,0 +1,15 @@
+dataset_root: ./data/hamiballs2_3d_sparse_springs_g1_khalf_v2
+generator_config: configs/generator/hamiballs2_frozen_v2_g1_khalf_.yaml
+train_pack: ./data/hamiballs2_3d_sparse_springs_g1_khalf_v2/derived/train_crop49_pack_v1
+validation_pack: ./data/hamiballs2_3d_sparse_springs_g1_khalf_v2/derived/validation_crop49_contact_pack_v1
+output_dir: ./outputs/hami2_physiformer
+master_seed: 42
+steps: 50000
+validation_every: 2500
+num_workers: 8
+model:
+  hidden_size: 168
+  depth: 12
+  num_heads: 8
+  mlp_inner_dim: 336
+  num_register_tokens: 2

@@ -1,0 +1,56 @@
+format_version: 1
+seed: 42
+output:
+  root: ./data/hamiballs_canonical_v2/source_seed42
+  compressed: false
+  reserve_free_gib: 20.0
+runtime: {workers: 16, required_pymunk_version: "7.3.0"}
+physics:
+  collisions_enabled: true
+  frame_dt: 0.03333333333333333
+  substeps: 8
+  box_half_extent: 1.0
+  wall_radius: 0.01
+  wall_restitution: 0.8
+  damping: 1.0
+  gravity_x: 0.0
+  gravity_y: 0.0
+  harmonic_k: 0.5
+  smooth_integrator: pre_kick_symplectic_euler
+  iterations: 20
+  collision_persistence: 3
+  collision_slop: 0.001
+  friction: 0.0
+  sleep_enabled: false
+  threaded: false
+sampling:
+  collision_mode: natural
+  num_objects: 5
+  short_steps: 48
+  long_chunks: 4
+  all_split_steps: 192
+  handoff_validation: audit_only
+  radius_min: 0.06
+  radius_max: 0.10
+  mass_min: 0.5
+  mass_max: 1.5
+  restitution_min: 0.4
+  restitution_max: 0.9
+  speed_min: 0.35
+  speed_max: 0.9
+  placement_margin: 0.015
+  max_placement_attempts: 2000
+  max_scene_attempts: 64
+  collision_enriched_train_fraction: 0.0
+  minimum_collision_events: 1
+  closure_check_frames: 4
+  seam_quiet_substeps: 5
+  closure_float64_tolerance: 0.00000001
+  closure_float32_tolerance: 0.0002
+splits:
+  train: 3584
+  dev: 128
+  calibration_fit: 128
+  calibration_audit: 0
+  test: 256
+  long_test: 0

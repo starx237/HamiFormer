@@ -1,0 +1,90 @@
+{
+  "continuous_h": {
+    "expected_role": "hami1-continuous-h-relation-training",
+    "expected_schema": "hamiformer.hami1.continuous_h.relation_training.v1",
+    "expected_updates": 50000,
+    "h_digest": null,
+    "path": "outputs/hami1_base/continuous_h_terminal.pt",
+    "sha256": null
+  },
+  "hull_weight": 0.5,
+  "integrator": "gfjp_symplectic_euler_k1",
+  "objective": {
+    "backward": "shared_residual_mlp_pseudohuber_v1",
+    "cache_boundary": "cache_field_start_d_tokens_d_candidate_h_affine_jet_and_exogenous_gate_never_cache_internal_previous_mixed_v1",
+    "carrier": "trajectory_shared_rf_node_per_object_physical_reset_schedule_v1",
+    "clean_teacher_forcing": "all_edge_exact_predecessor_random_previous_g_hard_vector_rms_margin_v1",
+    "deployment": "unbounded_r_output_scale_1_no_mask_no_inference_scale_v1",
+    "history": "cached_rf_field_start_then_current_r_online_previous_detached_every_12_edges_v1",
+    "initialization": "fresh_hidden_layers_zero_output_head_r_equals_zero_v1",
+    "mixed_ar": "half_direct_half_fixed_scale_component_hull_pseudohuber_v1",
+    "ordered_capacity": {
+      "component_hull": "detached_per_object_qp_convex_projection_fixed_train_scale_v1",
+      "fit": "log1p_dimensionless_component_mean_squared_residual_error_v1",
+      "local_fit": "dimensionless_priority_fit_plus_hard_vector_rms_no_harm_margin_v1",
+      "mixed_recovery": "sqrt_one_plus_dimensionless_vector_error_energy_minus_one_v1",
+      "no_harm": "priority_times_softplus_Hr_minus_H_excess_energy_v1",
+      "online_residual_raw_hull_qp_regret_gradient": 0.0,
+      "previous_g": "independent_uniform_per_object_per_edge_on_exact_predecessor_v1",
+      "primary": "priority_times_fit_plus_no_harm_v1",
+      "priority": "inverse_one_plus_dimensionless_ideal_energy_v1",
+      "scale": "first_fresh_carrier_all_accepted_fields_median_local_H_component_RMS_v1",
+      "secondary": "one_minus_priority_times_fit_v1"
+    },
+    "schedule": {
+      "definition": "20_step_linear_warmup_then_terminal_inclusive_full_cosine_v1",
+      "learning_rate": {
+        "maximum": 0.0003,
+        "minimum": 3e-06,
+        "warmup_updates": 20
+      },
+      "updates": 200,
+      "updates_by_n": {
+        "12": 50,
+        "20": 100,
+        "8": 50
+      }
+    },
+    "weighting": "equal_qp_equal_local_mixed_no_manual_recovery_weight_v1"
+  },
+  "parents": {
+    "main_checkpoint": "outputs/hami1_base/checkpoint_050000.pt",
+    "main_checkpoint_sha256": null,
+    "terminal_step": 50000,
+    "wide_checkpoint": "outputs/hami1_wide_d/checkpoint_050000.pt",
+    "wide_checkpoint_sha256": null
+  },
+  "prohibitions": [
+    "no_cached_previous_mixed_after_rf_field_edge_zero",
+    "no_cli_learning_rate_or_warmup_override",
+    "no_confidence_abstention_or_second_expert",
+    "no_d_or_h_parameter_update",
+    "training_split_inputs_only",
+    "no_event_or_contact_conditioning",
+    "no_full_state_or_batch_adaptive_hull_scale",
+    "no_gate_construction_forward_or_training",
+    "no_initial_checkpoint_continuation",
+    "configured_learning_rate_schedule",
+    "no_manual_recovery_weight_or_gradient_projection",
+    "fixed_scale_and_initialization",
+    "no_oracle_history_or_full_oracle_trace",
+    "no_per_batch_scale_drift_after_first_fresh_carrier",
+    "no_online_residual_raw_direct_hull_or_qp_regret_gradient",
+    "no_relative_division_or_manual_residual_floor",
+    "no_reuse_of_terminal_r_or_gate_weights",
+    "fixed_training_configuration"
+  ],
+  "purpose": "hami1_component_residual_training",
+  "schema": "hamiformer.hami1.residual.registration.v1",
+  "training": {
+    "carrier_batch_size": 64,
+    "hull_weight": 0.5,
+    "refresh_every_updates": 8,
+    "sampling_seed": 906130011,
+    "updates_by_n": {
+      "12": 50,
+      "20": 100,
+      "8": 50
+    }
+  }
+}

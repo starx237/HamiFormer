@@ -1,0 +1,99 @@
+schema: hamiformer.hamiballs2.formal_posthd_config.v1
+dataset_root: ./data/hamiballs2_3d_sparse_springs_g1_khalf_v2
+generator_config: configs/generator/hamiballs2_frozen_v2_g1_khalf_.yaml
+train_pack: ./data/hamiballs2_3d_sparse_springs_g1_khalf_v2/derived/train_crop49_pack_v1
+validation_pack: ./data/hamiballs2_3d_sparse_springs_g1_khalf_v2/derived/validation_crop49_contact_pack_v1
+output_dir: ./outputs/hami2_main
+wide_d:
+  config: configs/hamiballs2/physiformer.yaml
+  checkpoint: outputs/hami2_joint/d/step_050000.pt
+  state_key: ema
+  parameters: 5615598
+hamiltonian:
+  config: configs/hamiballs2/hamiltonian.yaml
+  checkpoint: outputs/hami2_joint/h/step_050000.pt
+  state_key: model
+  parameters: 22252
+  frame_dt: 0.03333333333333333
+  plas_substeps_per_frame: 1
+  plas_unhealthy_edge_policy: d_reset
+  plas_method: parallel
+  plas_refinement_iterations_in_RF: 1
+  mixed_singular_floor: 0.2
+  mixed_condition_limit: 10.0
+  tangent_diagnostic_limit: 5.0
+  carrier_tangent_diagnostic: exact_threshold_certified_gram
+model:
+  phase_scale:
+  - 0.5508531938328172
+  - 0.5512827221664355
+  - 0.6619421286349414
+  - 0.4983561841502368
+  - 0.4977250710808816
+  - 0.7073358583564877
+  d_token_dim: 168
+  residual_width: 64
+  gate_rank: 24
+  gate_hidden: 24
+  gate_qp_width: 32
+  max_leaves: 8
+  leaf_gate_standardized: true
+protocol:
+  master_seed: 42
+  common_r_updates: 200
+  scalar0_updates: 200
+  scalar1_updates: 200
+  final_qp_updates: 200
+  source_block_size: 64
+  scalar_pool_blocks: 25
+  scalar_mixed_rf_counts_per_B64:
+    8: 32
+    12: 20
+    20: 12
+  final_refreshes: 25
+  updates_per_final_refresh: 8
+  final_noise_halves: 2
+  final_mixed_rf_counts_per_noise_B32:
+    8: 16
+    12: 10
+    20: 6
+  common_r_window_edges: 12
+  q_p_training_scales:
+  - 1.0
+  - 1.0
+  scalar1_no_harm_weight: 0.25
+  final_qp_no_harm_weight: 0.25
+  ridge_relative: 0.01
+  ridge_intercept_multiplier: 0.01
+  tree_max_depth: 4
+  tree_max_leaves: 8
+  tree_feature_budget: 32
+  tree_fit_count: 1
+  tree_fixed_during_final_qp: true
+  cumulative_ridge_across_final_refreshes: true
+  replay_affine_jets_during_training: true
+optimizer:
+  common_r:
+    maximum_lr: 0.001
+    minimum_lr: 0.0001
+    weight_decay: 0.0001
+    grad_clip: 1.0
+  scalar0:
+    maximum_lr: 0.003
+    minimum_lr: 0.0001
+    weight_decay: 0.0001
+    grad_clip: 1.0
+  scalar1:
+    maximum_lr: 0.003
+    minimum_lr: 0.0001
+    weight_decay: 0.0001
+    grad_clip: 1.0
+  final_qp:
+    maximum_lr: 0.003
+    minimum_lr: 0.0001
+    weight_decay: 0.0001
+    grad_clip: 1.0
+operations:
+  nonfinite_update_policy: warn_skip_continue
+  warning_ledger: warnings.jsonl
+  error_ledger: errors.jsonl

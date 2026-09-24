@@ -1,0 +1,49 @@
+format_version: 2
+dataset_name: hamiballs2_3d_sparse_springs_g1_khalf_v2
+physical_seeds: [40, 41, 42, 43]
+output:
+  root: ./data/hamiballs2_3d_sparse_springs_g1_khalf_v2
+  compressed: true
+  workers: 16
+  reserve_free_gib: 20.0
+  storage_format: npz_shard_v1
+  shard_size: 512
+physics:
+  engine: pybullet
+  required_pybullet_version: "3.2.7"
+  frame_dt: 0.03333333333333333
+  substeps: 32
+  solver_iterations: 50
+  restitution_velocity_threshold: 0.2
+  contact_processing_threshold: 0.0
+  contact_erp: 0.0
+  gravity: 1.0
+  box_half_extent_xy: 1.0
+  box_height: 2.0
+  wall_thickness: 0.02
+  boundary_restitution: 1.0
+  friction: 0.0
+sampling:
+  episode_steps: 192
+  window_steps: 48
+  n_min: 5
+  n_max: 10
+  radius_min: 0.06
+  radius_max: 0.10
+  mass_min: 0.5
+  mass_max: 1.5
+  restitution_min: 0.90
+  restitution_max: 0.98
+  speed_min: 0.35
+  speed_max: 0.90
+  placement_margin: 0.015
+  max_placement_attempts: 2000
+  spring_expected_degree: 2.0
+  spring_period_min: 0.7071067811865476
+  spring_period_max: 2.8284271247461903
+  spring_log_strain_abs: 0.15
+per_seed_counts:
+  train: 7680
+  calibration: 128
+  validation: 128
+  expansion: 256

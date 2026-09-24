@@ -1,0 +1,11 @@
+{
+  "schema": "hamiformer.hami1.packing.v1",
+  "physical_seeds": [40, 41, 42, 43],
+  "source_future_steps": 192,
+  "training_future_steps": 48,
+  "training_offsets": [0, 48, 96, 144],
+  "num_objects": 5,
+  "q_dim": 2,
+  "attr_dim": 3,
+  "sources_per_seed": {"train": 3584, "calibration": 128, "validation": 128, "reserve": 256}
+}
